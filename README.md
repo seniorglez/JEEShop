@@ -52,7 +52,14 @@ So go ahead and create the shop's db
 
 ####Tomcat9
 
+###Libraries
+* [MySQL's Connector/J](https://dev.mysql.com/downloads/connector/j/5.1.html) - The official connector for MySQL database which is compatible with MariaDB. More info [here](https://stackoverflow.com/questions/7592056/am-i-using-jdbc-connection-pooling)
+* servlet-api.jar - Included with Tomcat (under the directory lib)
+* jsp-api.jar - Included with Tomcat (under the directory lib)
+
 ###Running it 
+
+
 
 ## Built With
 
@@ -62,7 +69,7 @@ So go ahead and create the shop's db
 
 ## Contributing
 
-Feel free to fork it and made pull request if i made something wrong but please keep in mind that it is just an example of servlet and jsp use.
+Feel free to fork it and made pull request if I made something wrong but please keep in mind that it is just an example of servlet and jsp use.
 
 
 ## Authors

@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/ServletController" docBase="ServletController" debug="5" relodable="true" crosContext="true">
+<Context path="/ShopJEE docBase="ShopJEE" debug="5" relodable="true" crosContext="true">
 <Resource
-  type="javax.sql.DataSource"
-  auth="Container"
-  name="jdbc/pool1"
-  driverClassName="com.mysql.jdbc.Driver"
-  url="jdbc:mysql://localhost/pool1"
-  username="root"
-  password=""
-  maxActive="100"
-  maxIdle="30"
-  maxWait="10000"
+  	type="javax.sql.DataSource"
+  	auth="Container"
+  	name="jdbc/pool1"
+  	driverClassName="com.mysql.jdbc.Driver"
+  	url="jdbc:mysql://localhost/shop"
+  	username="shopadmin"
+  	password="shop"
+  	maxActive="100"
+  	maxIdle="30"
+  	maxWait="10000"
  />
 </Context>
