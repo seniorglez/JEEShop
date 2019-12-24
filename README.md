@@ -71,4 +71,4 @@ Feel free to fork it and made pull request if i made something wrong but please 
 
 ## License
 
-This project is licensed under the GPL3 license - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the GPL3 license - see the [LICENSE](LICENSE) file for details
