@@ -36,8 +36,8 @@ sudo systemctl start mysqld.service
 sudo systemctl enable mysqld.service
 ```
 Now wee need to create owr db. First of all we will log into owr mariadb server.
-```bash
 
+```bash
 sudo mysql -u root
 
 ```
