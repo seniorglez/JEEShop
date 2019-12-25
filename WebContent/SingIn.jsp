@@ -10,8 +10,8 @@
 <div class="singin">
       <h1>Register to Web App</h1>
       <form method="post" action="ServletController">
-        <p><input type="text" name="login" value="name" placeholder="Username"></p>
-        <p><input type="password" name="password" value="password" placeholder="Password"></p>
+        <p><input type="text" name="name"  placeholder="Username"></p>
+        <p><input type="password" name="password" placeholder="Password"></p>
         <p class="submit"><input type="submit" name="submit" value="Singin"></p>
       </form>
     </div>

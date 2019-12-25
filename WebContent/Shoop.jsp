@@ -7,6 +7,6 @@
 <title>Shop</title>
 </head>
 <body>
-
+<h1>WELCOME TO THE SHOP DEAR CUSTOMER</h1>
 </body>
 </html>
