@@ -10,7 +10,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 First and foremost, this is a tutorial for Arch-based distro's users, if it is not your case you will need to learn how to install the packages for your distros. The rest of the tutorial is the same.
 
-####Eclipse
+#### Eclipse
 
 In order to run this software you will need to install Eclipse IDE for java EE developers. You can not install several eclipse versions because they will conflict so if it is your case you will need to find the way to keep both.
 You cant get more info [here](https://wiki.archlinux.org/index.php/Eclipse)
@@ -24,7 +24,7 @@ You cant get more info [here](https://wiki.archlinux.org/index.php/Eclipse)
 
 ```
 
-####MariaDB
+#### MariaDB
 
 MariaDB is nowdays the default relational database solution for Arch Linux so it will be my choice.
 
@@ -59,7 +59,6 @@ So go ahead and create the shop's db and a new user.
 We can now login with this new user which have all privileges on that bd.
 
 ```bash
-	
 	sudo mysql -u root
 
 ```
@@ -74,14 +73,15 @@ Let's create the tables we need now.
 	
 ```
 
-####Tomcat9
+#### Tomcat9
 
-###Libraries
+### Libraries
 * [MySQL's Connector/J](https://dev.mysql.com/downloads/connector/j/5.1.html) - The official connector for MySQL database which is compatible with MariaDB. More info [here](https://stackoverflow.com/questions/7592056/am-i-using-jdbc-connection-pooling)
 * servlet-api.jar - Included with Tomcat (under the directory lib)
 * jsp-api.jar - Included with Tomcat (under the directory lib)
 
-###Get a copy
+### Get a copy
+
 For some reason I can not just import this project with the git tool that eclipse provides. So I just created a new Dynamic Web Project (Dynamic web module 4.0 and named JEEShop), then I deleted the MANIFIEST.MF and I open my terminal and I start a git repository on the proyect's directory.
 
 ```bash
@@ -99,7 +99,7 @@ For some reason I can not just import this project with the git tool that eclips
 Now we have the full project but eclipse will not show the files we just pull, we just need to refresh the project. All we need to do is right click on the project and select Refresh (or press F5).
 
 
-###Running it 
+### Running it 
 
 
 ## Built With
