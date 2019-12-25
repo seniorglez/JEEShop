@@ -14,7 +14,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+
+import model.User;
 
 
 /**
@@ -50,8 +53,11 @@ public class ServletController extends HttpServlet {
 		PreparedStatement st=null;
 		ResultSet rs = null;
 		//igual es mejor crear aqui el objeto
+		User us=null;
 		String name=request.getParameter("name");
 		String password=request.getParameter("password");
+		String submit= request.getParameter("submit");
+		
 		
 		try {
 			ctx=new InitialContext();
@@ -60,6 +66,23 @@ public class ServletController extends HttpServlet {
 			System.out.println(con!=null ? "Connected" : "Conexion failed");
 			st=con.prepareStatement("SELECT*FROM customers WHERE customers.name = 'name' AND customers.password = 'passw';");
 			rs=st.executeQuery();
+			us = new User();
+			us.setName(name);
+			us.setPassword(password);
+			if(rs.next()) {
+				if(!submit.equalsIgnoreCase("Login"))response.sendRedirect("Index.jsp");
+				System.out.print("Login in");
+				HttpSession session=request.getSession();
+				session.setAttribute("user", us);
+				response.sendRedirect("Shoop.jsp");
+			}else {
+				if(!submit.equalsIgnoreCase("Singin"))response.sendRedirect("Index.jsp");
+				System.out.print("creating a new account");
+				
+				st=con.prepareStatement("INSERT INTO customers(name,password) VALUES('"+name+"','"+password+"');");
+				st.executeUpdate();
+				response.sendRedirect("LogIn.jsp");
+			}
 		} catch (NamingException |SQLException e) {
 			e.printStackTrace();
 		}finally{

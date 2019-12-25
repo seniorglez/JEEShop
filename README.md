@@ -8,11 +8,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-First and foremost, this is a tutorial for Arch-based distro's users, if is not your case you will need to learn how to install the packages for your distros. The rest of the tutorial is the same.
+First and foremost, this is a tutorial for Arch-based distro's users, if it is not your case you will need to learn how to install the packages for your distros. The rest of the tutorial is the same.
 
 ####Eclipse
 
-In order to run this software you will need to install Eclipse IDE for java EE developers. You can not install several eclipse versions because they will conflict so if is your case you will need to find the way to keep both.
+In order to run this software you will need to install Eclipse IDE for java EE developers. You can not install several eclipse versions because they will conflict so if it is your case you will need to find the way to keep both.
 You cant get more info [here](https://wiki.archlinux.org/index.php/Eclipse)
 
 ```bash
