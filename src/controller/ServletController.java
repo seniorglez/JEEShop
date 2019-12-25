@@ -22,7 +22,7 @@ import javax.sql.DataSource;
  * Servlet implementation class ServletController
  */
 @WebServlet("/ServletController")
-@Resource(name = "jdbc/pool1")
+@Resource(name = "jdbc/database")
 public class ServletController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -57,7 +57,7 @@ public class ServletController extends HttpServlet {
 		
 		try {
 			ctx=new InitialContext();
-			dataSource=(DataSource)ctx.lookup("java:comp/env/jdbc/pool1");
+			dataSource=(DataSource)ctx.lookup("java:comp/env/jdbc/database");
 			con=dataSource.getConnection();
 			System.out.println(con!=null ? "Connected" : "Conexion failed");
 			st=con.prepareStatement("SELECT*FROM users WHERE users.name = 'name'AND users.password = 'passw';");

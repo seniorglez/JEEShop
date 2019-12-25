@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/ShopJEE docBase="ShopJEE" debug="5" relodable="true" crosContext="true">
+<Context path="/ShopJEE" docBase="ShopJEE" debug="5" relodable="true" crossContext="true">
 <Resource
   	type="javax.sql.DataSource"
+  	name="jdbc/database"
   	auth="Container"
-  	name="jdbc/pool1"
   	driverClassName="com.mysql.jdbc.Driver"
   	url="jdbc:mysql://localhost/shop"
   	username="shopadmin"
