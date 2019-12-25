@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.annotation.Resource;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -22,7 +21,6 @@ import javax.sql.DataSource;
  * Servlet implementation class ServletController
  */
 @WebServlet("/ServletController")
-@Resource(name = "jdbc/database")
 public class ServletController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -60,7 +58,7 @@ public class ServletController extends HttpServlet {
 			dataSource=(DataSource)ctx.lookup("java:comp/env/jdbc/database");
 			con=dataSource.getConnection();
 			System.out.println(con!=null ? "Connected" : "Conexion failed");
-			st=con.prepareStatement("SELECT*FROM users WHERE users.name = 'name'AND users.password = 'passw';");
+			st=con.prepareStatement("SELECT*FROM customers WHERE customers.name = 'name' AND customers.password = 'passw';");
 			rs=st.executeQuery();
 		} catch (NamingException |SQLException e) {
 			e.printStackTrace();

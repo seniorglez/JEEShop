@@ -16,9 +16,11 @@ In order to run this software you will need to install Eclipse IDE for java EE d
 You cant get more info [here](https://wiki.archlinux.org/index.php/Eclipse)
 
 ```bash
-sudo pacman -Syu
 
-sudo pacman -S eclipse-jee
+	sudo pacman -Syu
+
+	sudo pacman -S eclipse-jee
+
 
 ```
 
@@ -27,27 +29,49 @@ sudo pacman -S eclipse-jee
 MariaDB is nowdays the default relational database solution for Arch Linux so it will be my choice.
 
 ```bash
-sudo pacman -Syu mariadb mariadb-clients libmariadbclient
 
-sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
+	sudo pacman -Syu mariadb mariadb-clients libmariadbclient
 
-sudo systemctl start mysqld.service
+	sudo mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
-sudo systemctl enable mysqld.service
+	sudo systemctl start mysqld.service
+
+	sudo systemctl enable mysqld.service
+	
 ```
-Now wee need to create owr db. First of all we will log into owr mariadb server.
+Now we need to create owr db. First of all we will log into owr mariadb server.
 
 ```bash
-sudo mysql -u root
+	sudo mysql -u root
 
 ```
-So go ahead and create the shop's db
+So go ahead and create the shop's db and a new user.
 
 ```sql
+
 	CREATE DATABASE shop;
-	GRANT ALL ON shop.* TO shopadmin@localhost IDENTIFIED BY 'shop';
+	GRANT ALL ON shop.* TO 'shopadmin'@localhost IDENTIFIED BY 'shop';
 	FLUSH privileges;
 	exit
+	
+```
+
+We can now login with this new user which have all privileges on that bd.
+
+```bash
+	
+	sudo mysql -u root
+
+```
+
+Let's create the tables we need now.
+
+```sql
+	
+	use shop
+	
+	CREATE TABLE IF NOT EXISTS customers(name VARCHAR(10) NOT NULL, password VARCHAR(20) NOT NULL);
+	
 ```
 
 ####Tomcat9
@@ -57,8 +81,25 @@ So go ahead and create the shop's db
 * servlet-api.jar - Included with Tomcat (under the directory lib)
 * jsp-api.jar - Included with Tomcat (under the directory lib)
 
-###Running it 
+###Get a copy
+For some reason I can not just import this project with the git tool that eclipse provides. So I just created a new Dynamic Web Project (Dynamic web module 4.0 and named JEEShop), then I deleted the MANIFIEST.MF and I open my terminal and I start a git repository on the proyect's directory.
 
+```bash
+	
+	cd-eclipse-workspace/JEEShop/
+	
+	git init
+	
+	git remote add origin https://github.com/seniorglez/JEEShop.git
+	
+	git pull origin master
+	
+```
+
+Now we have the full project but eclipse will not show the files we just pull, we just need to refresh the project. All we need to do is right click on the project and select Refresh (or press F5).
+
+
+###Running it 
 
 
 ## Built With
