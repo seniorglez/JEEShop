@@ -59,7 +59,7 @@ So go ahead and create the shop's db and a new user.
 We can now login with this new user which have all privileges on that bd.
 
 ```bash
-	sudo mysql -u root
+	mysql -u shopadmin -p
 
 ```
 
@@ -69,7 +69,10 @@ Let's create the tables we need now.
 	
 	use shop
 	
-	CREATE TABLE IF NOT EXISTS customers(name VARCHAR(10) NOT NULL, password VARCHAR(20) NOT NULL);
+	CREATE TABLE IF NOT EXISTS customers(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, name VARCHAR(10) NOT NULL, password VARCHAR(20) NOT NULL);
+	
+	CREATE TABLE IF NOT EXISTS products (idProduct INT NOT NULL PRIMARY KEY AUTO_INCREMENT, description VARCHAR(40) NOT NULL, price FLOAT(7,2) NOT NULL);
+	
 	
 ```
 
@@ -86,7 +89,7 @@ For some reason I can not just import this project with the git tool that eclips
 
 ```bash
 	
-	cd-eclipse-workspace/JEEShop/
+	cd eclipse-workspace/JEEShop/
 	
 	git init
 	
