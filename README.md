@@ -10,10 +10,14 @@ These instructions will get you a copy of the project up and running on your loc
 
 First and foremost, this is a tutorial for Arch-based distro's users, if it is not your case you will need to learn how to install the packages for your distros. The rest of the tutorial is the same.
 
+#### JDK 8 or higher
+
+I hope you did not need help to install this. Anyway [here](https://wiki.archlinux.org/index.php/Java#Installation) is the archwiki page about java.
+
 #### Eclipse
 
 In order to run this software you will need to install Eclipse IDE for java EE developers. You can not install several eclipse versions because they will conflict so if it is your case you will need to find the way to keep both.
-You cant get more info [here](https://wiki.archlinux.org/index.php/Eclipse)
+You cant get more info [here](https://wiki.archlinux.org/index.php/Eclipse).
 
 ```bash
 
@@ -77,6 +81,29 @@ Let's create the tables we need now.
 ```
 
 #### Tomcat9
+
+Tomcat is the server that will allow us to execute owr projet.In order to install Tomcat just download it form [here](https://tomcat.apache.org/download-90.cgi) or use wget.
+
+If you have download the tar.gz version execute this commands to extract it and move it to your home directory.
+
+```bash
+
+	cd ~/Downloads
+	
+	tar -xvzf apache-tomcat-9.x.xx.tar.gz
+	
+	mv apache-tomcat-9.x.xx ~/Tomcat	
+
+```
+
+Now we need to change the file permissions under the directory bin to allow Eclipse to execute Tomcat
+
+```bash
+
+	sudo chmod +x ~/Tomcat/bin/*
+
+```
+This Tomcat installation is only for development and testing purposes, so if you want to use Tomcat to deploy your JavaEE application you will need to follow a few more steps that I will add on an md file on the future.
 
 ### Libraries
 * [MySQL's Connector/J](https://dev.mysql.com/downloads/connector/j/5.1.html) - The official connector for MySQL database which is compatible with MariaDB. More info [here](https://stackoverflow.com/questions/7592056/am-i-using-jdbc-connection-pooling)
