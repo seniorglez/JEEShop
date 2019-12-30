@@ -67,8 +67,7 @@ public class DataBaseTool {
 	public List<Product> getProducts() {
 		String searchQuery = "SELECT idProduct, description, price FROM products";
 		List<Product> products = new ArrayList<>();
-		try (Connection con = dataSource.getConnection();
-				PreparedStatement ps = con.prepareStatement(searchQuery);) {
+		try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(searchQuery);) {
 			ResultSet rs = ps.executeQuery();
 			Product p;
 			while (rs.next()) {
@@ -97,6 +96,23 @@ public class DataBaseTool {
 		// insertData(sql);
 	}
 
+	public Product getProduct(int code) {
+		String searchQuery = "SELECT idProduct, description, price FROM products WHERE idProduct='" + code + "'";
+		Product p = new Product();
+		try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(searchQuery);) {
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				p.setCode(rs.getInt("idProduct"));
+				p.setDescription(rs.getString("description"));
+				p.setPrice(rs.getDouble("price"));
+			}
+			rs.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return p;
+	}
+
 	private void insertData(String sql) {
 		try (Connection con = dataSource.getConnection();) {
 			System.out.println(con != null ? "Connected" : "Conexion failed");
@@ -106,4 +122,5 @@ public class DataBaseTool {
 			e.printStackTrace();
 		}
 	}
+
 }

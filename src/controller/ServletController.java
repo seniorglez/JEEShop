@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +21,7 @@ import model.User;
 public class ServletController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private DataBaseTool dbt;
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
@@ -81,5 +83,13 @@ public class ServletController extends HttpServlet {
 
 	public List<Product> getProducts() {
 		return this.dbt.getProducts();
+	}
+
+	public Product getProduct(int code) {
+		return dbt.getProduct(code);
+	}
+	
+	public void createPurchase(User us, Map<Integer,Integer> cart) {
+		
 	}
 }
