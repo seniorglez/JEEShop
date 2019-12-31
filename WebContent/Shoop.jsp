@@ -66,38 +66,42 @@ tr:nth-child(even) {
 	<br>
 	<%
 		if (request.getParameter("submit") != null) {
-			if (request.getParameter("submit").equals("Add to the cart")) {
+
+			switch (request.getParameter("submit")) {
+			case "Log Out":
+				session.invalidate();
+				response.sendRedirect("Index.jsp");
+				break;
+			case "Buy":
+				sc.createPurchase((User) session.getAttribute("user"), cart);
+				cart = new HashMap<Integer, Integer>();
+				break;
+
+			case "Delete product":
+				String s[] = request.getParameterValues("productCheck");
+				if (s != null) {
+					for (String e : s) {
+						System.out.println("Removing item with id: " + e);
+						Integer i = Integer.parseInt(e);
+						if (cart.containsKey(i))
+							cart.remove(i);
+						session.setAttribute("cart", cart);
+					}
+				}
+				break;
+			case "Add to the cart":
 				Integer code = Integer.parseInt((String) request.getParameter("product"));
 				Integer units = Integer.parseInt((String) request.getParameter("number"));
 				System.out.println("Adding " + units + " of id " + code);
 				cart.put(code, units);
 				session.setAttribute("cart", cart);
 			}
-			if (!cart.isEmpty()) {
-
-				switch (request.getParameter("submit")) {
-				case "Log Out":
-					session.invalidate();
-					response.sendRedirect("Index.jsp");
-					break;
-				case "Buy":
-					sc.createPurchase((User) session.getAttribute("user"), cart);
-					cart = new HashMap<Integer, Integer>();
-					break;
-
-				case "Delete product":
-					String s []= request.getParameterValues("productCheck");
-					if (s != null) {
-						for (String e : s) {
-							System.out.println("Removing item with id: " + e);
-							Integer i = Integer.parseInt(e);
-							if (cart.containsKey(i))
-								cart.remove(i);
-							session.setAttribute("cart", cart);
-						}
-					}
-				}
+		}
+		if (!cart.isEmpty()) {
+			
 	%>
+	<br>
+	<h1>Your cart</h1>
 	<div style="overflow-x: auto">
 		<form action="Shoop.jsp" method="post">
 			<table>
@@ -110,11 +114,11 @@ tr:nth-child(even) {
 
 				<%
 					int number;
-							double total = 0;
-							Product p;
-							for (int i : cart.keySet()) {
-								number = cart.get(i);
-								p = sc.getProduct(i);
+						double total = 0;
+						Product p;
+						for (int i : cart.keySet()) {
+							number = cart.get(i);
+							p = sc.getProduct(i);
 				%>
 
 				<tr>
@@ -125,7 +129,8 @@ tr:nth-child(even) {
 					<td><%=number%></td>
 				</tr>
 				<%
-					}
+					total = total + (p.getPrice() * number);
+						}
 				%><!-- why all the checkboxes have the same name: https://stackoverflow.com/questions/15775412/checking-which-check-boxes-are-selected-using-java-a-jsp -->
 				<tr>
 					<td colspan="4">Total <%=total%></td>
@@ -137,7 +142,6 @@ tr:nth-child(even) {
 		</form>
 	</div>
 	<%
-		}
 		}
 	%>
 </body>
