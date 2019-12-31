@@ -37,7 +37,7 @@ th {
 }
 
 tr:nth-child(even) {
-	background-color: #f2f2f2;
+	background-color: #1b522a;
 }
 </style>
 </head>
@@ -60,8 +60,8 @@ tr:nth-child(even) {
 			<%
 				}
 			%>
-		</select> <b>Number: </b> <input type="Number" Name="number" value="1"/> <br /> <input
-			type="submit" name="submit" value="Add to the cart" />
+		</select> <b>Number: </b> <input type="Number" Name="number" value="1" min="1" />
+		<br /> <input type="submit" name="submit" value="Add to the cart" />
 	</form>
 	<br>
 	<%
@@ -86,10 +86,10 @@ tr:nth-child(even) {
 					break;
 
 				case "Delete product":
-					String s = request.getParameter("productCheck");
+					String s []= request.getParameterValues("productCheck");
 					if (s != null) {
-						String[] strs = s.split(";");
-						for (String e : strs) {
+						for (String e : s) {
+							System.out.println("Removing item with id: " + e);
 							Integer i = Integer.parseInt(e);
 							if (cart.containsKey(i))
 								cart.remove(i);
@@ -116,7 +116,7 @@ tr:nth-child(even) {
 								number = cart.get(i);
 								p = sc.getProduct(i);
 				%>
-				<!-- why all checkboxs have the same name: https://stackoverflow.com/questions/15775412/checking-which-check-boxes-are-selected-using-java-a-jsp -->
+
 				<tr>
 					<td><input type="checkbox" name="productCheck"
 						value="<%=p.getCode()%>"></td>
@@ -126,7 +126,7 @@ tr:nth-child(even) {
 				</tr>
 				<%
 					}
-				%>
+				%><!-- why all the checkboxes have the same name: https://stackoverflow.com/questions/15775412/checking-which-check-boxes-are-selected-using-java-a-jsp -->
 				<tr>
 					<td colspan="4">Total <%=total%></td>
 				</tr>
