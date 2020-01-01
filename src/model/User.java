@@ -17,28 +17,55 @@
  *	along with JEEShop. If not, see <https://www.gnu.org/licenses/>.
  */
 package model;
+
 /**
  * 
- * @author diego
- *
+ * @author Diego Dominguez Gonzalez Represents a customer registered on the web
  */
 public class User {
+	/**
+	 * The name which identifies the costumer's account.
+	 */
 	private String name;
+	/**
+	 * The password for the costumer's account.
+	 */
 	private String password;
-	
+
+	/**
+	 * Gets the name which identifies the costumer's account.
+	 * 
+	 * @return the name which identifies this costumer's account.
+	 */
 	public String getName() {
 		return name;
 	}
+
+	/**
+	 * Changes the name which identifies the costumer's account.
+	 * 
+	 * @param name the new name which identifies this costumer's account.
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	/**
+	 * Gets the password for the costumer's account.
+	 * 
+	 * @return The password for this costumer's account.
+	 */
 	public String getPassword() {
 		return password;
 	}
+
+	/**
+	 * Changes the password for the costumer's account.
+	 * 
+	 * @param password The new password for this costumer's account.
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 }
-
-

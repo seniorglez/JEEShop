@@ -47,9 +47,9 @@ public class DataBaseTool {
 	}
 
 	/**
-	 * Checks that if a costumer exists on the database
+	 * Checks if a costumer exists on the database
 	 * 
-	 * @param name     the name of the costumer's account.
+	 * @param name the name which identifies the costumer's account.
 	 * @param password the costumer's account.
 	 */
 	public boolean checkUser(String name, String password) {
@@ -73,7 +73,7 @@ public class DataBaseTool {
 	/**
 	 * Adds a new costumer to the database
 	 * 
-	 * @param name     the name of the costumer's account.
+	 * @param name     the name which identifies the costumer's account.
 	 * @param password the password that the costumer will use to login.
 	 */
 	public void createUser(String name, String password) {
@@ -81,7 +81,11 @@ public class DataBaseTool {
 		insertData("INSERT INTO customers(name,password) VALUES('" + name + "','" + password + "');");
 
 	}
-
+	/**
+	 * Returns all the products stored on the database
+	 * 
+	 * @return all the products on the database
+	 */
 	public List<Product> getProducts() {
 		String searchQuery = "SELECT idProduct, description, price FROM products";
 		List<Product> products = new ArrayList<>();
