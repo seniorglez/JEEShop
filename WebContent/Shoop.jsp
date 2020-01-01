@@ -118,7 +118,6 @@ tr:nth-child(even) {
 			}
 		}
 		if (!cart.isEmpty()) {
-			
 	%>
 	<br>
 	<h1>Your cart</h1>

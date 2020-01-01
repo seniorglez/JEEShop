@@ -18,7 +18,9 @@
  */
 
 package controller;
-
+/**
+ * Class wich controlls the log in and register process but also allows the view to get data from the model
+ */
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -42,13 +44,17 @@ public class ServletController extends HttpServlet {
 	private DataBaseTool dbt;
 
 	/**
+	 * 
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public ServletController() {
 		super();
 		this.dbt = new DataBaseTool();
 	}
-
+	/**
+	 * Alternative constructor to use this class to access the database from the view 
+	 * @param b just a boolean, does not really matters if is true or false 
+	 */
 	public ServletController(boolean b) {
 		this.dbt = new DataBaseTool();
 	}
@@ -99,15 +105,26 @@ public class ServletController extends HttpServlet {
 		response.getWriter().close();
 
 	}
-
+    /**
+     * Gets a List of Products that represents all the products on the database.
+     * @return List of Products that represents all the products on the database.
+     */
 	public List<Product> getProducts() {
 		return this.dbt.getProducts();
 	}
-
+	/**
+	 * 
+	 * @param code
+	 * @return
+	 */
 	public Product getProduct(int code) {
 		return dbt.getProduct(code);
 	}
-	
+	/**
+	 * 
+	 * @param us
+	 * @param cart
+	 */
 	public void createPurchase(User us, Map<Integer,Integer> cart) {
 		
 	}

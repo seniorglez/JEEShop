@@ -33,8 +33,20 @@ import javax.naming.NamingException;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
+/**
+ * A class that allows us to read and write a sql database
+ * 
+ * @author Diego Dominguez Gonzalez
+ *
+ */
 public class DataBaseTool {
+	/**
+	 * The Context of the JEE App
+	 */
 	private Context ctx = null;
+	/**
+	 * The DataSource that allows the connection with the database
+	 */
 	private DataSource dataSource = null;
 
 	public DataBaseTool() {
@@ -49,7 +61,7 @@ public class DataBaseTool {
 	/**
 	 * Checks if a costumer exists on the database
 	 * 
-	 * @param name the name which identifies the costumer's account.
+	 * @param name     the name which identifies the costumer's account.
 	 * @param password the costumer's account.
 	 */
 	public boolean checkUser(String name, String password) {
@@ -81,10 +93,11 @@ public class DataBaseTool {
 		insertData("INSERT INTO customers(name,password) VALUES('" + name + "','" + password + "');");
 
 	}
+
 	/**
-	 * Returns all the products stored on the database
+	 * Gets a List of Products that represents all the products on the database.
 	 * 
-	 * @return all the products on the database
+	 * @return List of Products that represents all the products on the database.
 	 */
 	public List<Product> getProducts() {
 		String searchQuery = "SELECT idProduct, description, price FROM products";
@@ -106,18 +119,20 @@ public class DataBaseTool {
 		return products;
 	}
 
-	/**
-	 * Adds the purchase stored in the HttpSession to the db
-	 * 
-	 * @param sesion
-	 */
-	public void addPurchase(HttpSession sesion) {
+	public void addPurchase() {
 		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
 		String date = sdf.format(new Date().getTime());
 
 		// insertData(sql);
 	}
 
+	/**
+	 * Gets a product object that represents a product stored on the database.
+	 * 
+	 * @param code The unitary code which identifies the product.
+	 * @return the product object that represents the product stored on the
+	 *         database.
+	 */
 	public Product getProduct(int code) {
 		String searchQuery = "SELECT idProduct, description, price FROM products WHERE idProduct='" + code + "'";
 		Product p = new Product();
@@ -135,6 +150,11 @@ public class DataBaseTool {
 		return p;
 	}
 
+	/**
+	 * Executes a sql statement on the database.
+	 * 
+	 * @param sql The sql statement to execute.
+	 */
 	private void insertData(String sql) {
 		try (Connection con = dataSource.getConnection();) {
 			System.out.println(con != null ? "Connected" : "Conexion failed");

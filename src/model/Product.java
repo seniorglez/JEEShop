@@ -25,7 +25,7 @@ package model;
  */
 public class Product {
 	/**
-	 * The unitary code that identifies the product.
+	 * The unitary code which identifies the product.
 	 */
 	private int code;
 	/**

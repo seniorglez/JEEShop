@@ -28,6 +28,7 @@ topnav {
 	background-color: #333;
 	overflow: hidden;
 }
+
 .topnav a {
 	float: left;
 	color: #68ccac;
@@ -47,7 +48,7 @@ topnav {
 	color: white;
 }
 
-.title{
+.title {
 	color: #999999;
 	font-family: arial, sans-serif;
 	font-size: 32px;
@@ -59,9 +60,8 @@ topnav {
 </head>
 <body>
 	<div class="topnav">
-		<a class="active" href="https://github.com/seniorglez/JEEShop">Source</a> 
-		<a href="LogIn.jsp">Login</a>
-		<a href="SingIn.jsp">Register</a>
+		<a class="active" href="https://github.com/seniorglez/JEEShop">Source</a>
+		<a href="LogIn.jsp">Login</a> <a href="SingIn.jsp">Register</a>
 	</div>
 	<br>
 	<br>
