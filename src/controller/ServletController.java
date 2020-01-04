@@ -126,6 +126,6 @@ public class ServletController extends HttpServlet {
 	 * @param cart
 	 */
 	public void createPurchase(User us, Map<Integer,Integer> cart) {
-		
+		dbt.addPurchase(us,cart);
 	}
 }

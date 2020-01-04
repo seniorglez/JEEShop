@@ -73,10 +73,25 @@ Let's create the tables we need now.
 	
 	use shop
 	
-	CREATE TABLE IF NOT EXISTS customers(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, name VARCHAR(10) NOT NULL, password VARCHAR(20) NOT NULL);
+	CREATE TABLE IF NOT EXISTS customers(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	name VARCHAR(10) NOT NULL,
+	password VARCHAR(20) NOT NULL);
 	
-	CREATE TABLE IF NOT EXISTS products (idProduct INT NOT NULL PRIMARY KEY AUTO_INCREMENT, description VARCHAR(40) NOT NULL, price FLOAT(7,2) NOT NULL);
+	CREATE TABLE IF NOT EXISTS products (
+	idProduct INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+	description VARCHAR(40) NOT NULL, 
+	price FLOAT(7,2) NOT NULL);
 	
+	CREATE TABLE IF NOT EXISTS bills (
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	client_id INT NOT NULL,
+	purchase_date DATETIME NOT NULL);
+	
+	CREATE TABLE IF NOT EXISTS bill_lines(
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	bill_id INT NOT NULL,
+	product_id INT NOT NULL units INT NOT NULL CHECK( UNITS > 0));
 	
 ```
 
@@ -149,4 +164,16 @@ Feel free to fork it and made pull request if I made something wrong but please 
 
 ## License
 
-This project is licensed under the GPL3 license - see the [LICENSE](LICENSE) file for details
+JEEShop is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or any later version.
+
+JEEShop is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the [GNU General Public License](LICENSE)
+along with JEEShop. If not, see [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/)
+
+![GPL3 or later](https://www.gnu.org/graphics/gplv3-or-later.png)

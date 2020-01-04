@@ -26,6 +26,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -82,6 +83,25 @@ public class DataBaseTool {
 		return false;
 	}
 
+	private int checkUserId(User u) {
+		try (Connection con = dataSource.getConnection();) {
+			System.out.println(con != null ? "Connected" : "Conexion failed");
+			PreparedStatement st = con.prepareStatement("SELECT*FROM customers WHERE customers.name = '" + u.getName()
+					+ "' AND customers.password = '" + u.getPassword() + "';");
+			ResultSet rs = st.executeQuery();
+			if (rs.next()) {
+				int i = rs.getInt("id");
+				rs.close();
+				return i;
+			}
+			rs.close();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
 	/**
 	 * Adds a new costumer to the database
 	 * 
@@ -119,11 +139,31 @@ public class DataBaseTool {
 		return products;
 	}
 
-	public void addPurchase() {
-		SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm");
-		String date = sdf.format(new Date().getTime());
+	private int getLastBillid(int clientId) {
+		try (Connection con = dataSource.getConnection();) {
+			System.out.println(con != null ? "Connected" : "Conexion failed");
+			PreparedStatement st = con.prepareStatement("SELECT MAX(bills.id) FROM bills, customers WHERE customers.id="+clientId);
+			ResultSet rs = st.executeQuery();
+			if (rs.next()) {
+				int i = rs.getInt(1);
+				rs.close();
+				return i;
+			}
+			rs.close();
 
-		// insertData(sql);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	
+
+	public void addPurchase(User us, Map<Integer, Integer> cart) {
+		int clientId=checkUserId(us);
+		insertData("INSERT INTO bills(client_id, purchase_date) VALUES (" + clientId + ", NOW())");
+		int billId=getLastBillid(clientId);
+		cart.forEach((p,u)->insertData("INSERT INTO bill_lines (bill_id, product_id, units) VALUES("+billId+","+p+","+u+")"));
 	}
 
 	/**
