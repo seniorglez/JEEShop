@@ -160,7 +160,9 @@ Feel free to fork it and made pull request if I made something wrong but please 
 
 ## Authors
 
-* **Diego Dominguez**
+* **Diego Dominguez**   <a href="https://twitter.com/DGlez1111" target="_blank">
+    <img alt="Twitter: DGlez1111" src="https://img.shields.io/twitter/follow/DGlez1111.svg?style=social" />
+  </a>
 
 ## License
 
