@@ -12,7 +12,7 @@ First and foremost, this is a tutorial for Arch-based distro's users, if it is n
 
 #### JDK 8 or higher
 
-I hope you did not need help to install this. Anyway [here](https://wiki.archlinux.org/index.php/Java#Installation) is the archwiki page about java.
+I hope you did not need help to install this. Anyway [here](https://wiki.archlinux.org/index.php/Java#Installation) is the archwiki page about java. If you are not familiar with JDK8 new features please check this [CheatSheet](https://github.com/BafS/Java8-CheatSheet/blob/master/README.md) out.
 
 #### Eclipse
 
@@ -179,3 +179,7 @@ You should have received a copy of the [GNU General Public License](LICENSE)
 along with JEEShop. If not, see [https://www.gnu.org/licenses/](https://www.gnu.org/licenses/)
 
 ![GPL3 or later](https://www.gnu.org/graphics/gplv3-or-later.png)
+
+### Why GPL3 and not AGPL3?
+
+I used GPL3 license because this is just an example of app and it will never turn on a real app because if you want to develop an real one you will prefer to use a framework like [Hibernate](https://hibernate.org/). But if you are developing a server side application under GPL3 means that this app will provide HTML and not an executable program so another person could take your code, make changes on it and not publish his own version. If you want to keep your application full free please use [AGPL3](https://www.gnu.org/licenses/agpl-3.0.en.html) instead of GPL3.
