@@ -154,7 +154,7 @@ For some reason I can not just import this project with the git tool that eclips
 
 ```bash
 	
-	cd eclipse-workspace/JEEShop/
+	cd eclipse-workspace/JEEShop
 	
 	git init
 	
