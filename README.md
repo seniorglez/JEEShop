@@ -14,6 +14,29 @@ First and foremost, this is a tutorial for Arch-based distro's users, if it is n
 
 I hope you did not need help to install this. Anyway [here](https://wiki.archlinux.org/index.php/Java#Installation) is the archwiki page about java. If you are not familiar with JDK8 new features please check this [CheatSheet](https://github.com/BafS/Java8-CheatSheet/blob/master/README.md) out.
 
+In my case I will choose [openJDK11](https://www.archlinux.org/packages/extra/x86_64/jdk11-openjdk/) because is the LTS version of the JDK.
+
+```bash
+
+	sudo pacman -Syu
+	
+	sudo pacman -S jdk11-openjdk
+
+```
+Now we need to set the JAVA_HOME in my case I will set it for all users so I just add this at the end of /etc/profile 
+
+```bash
+	
+	#JAVA
+	
+	export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+
+	export PATH=$JAVA_HOME/bin:$PATH
+
+```
+In case you would prefer to set the JAVA_HOME only for your user just add the same lines on ~/.bash_profile If you want to know more about the bash configuration files please check the [wiki](https://wiki.archlinux.org/index.php/Bash)
+
+
 #### Eclipse
 
 In order to run this software you will need to install Eclipse IDE for java EE developers. You can not install several eclipse versions because they will conflict so if it is your case you will need to find the way to keep both.
