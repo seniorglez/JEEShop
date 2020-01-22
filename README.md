@@ -36,6 +36,13 @@ Now we need to set the JAVA_HOME in my case I will set it for all users so I jus
 ```
 In case you would prefer to set the JAVA_HOME only for your user just add the same lines on ~/.bash_profile If you want to know more about the bash configuration files please check the [wiki](https://wiki.archlinux.org/index.php/Bash)
 
+After that restart your machine.
+
+```bash
+
+	reboot
+
+```
 
 #### Eclipse
 
