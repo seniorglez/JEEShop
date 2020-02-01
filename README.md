@@ -121,7 +121,8 @@ Let's create the tables we need now.
 	CREATE TABLE IF NOT EXISTS bill_lines(
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	bill_id INT NOT NULL,
-	product_id INT NOT NULL units INT NOT NULL CHECK( UNITS > 0));
+	product_id INT NOT NULL,
+	units INT NOT NULL CHECK( UNITS > 0));
 	
 ```
 
